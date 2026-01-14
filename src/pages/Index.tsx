@@ -86,10 +86,10 @@ const WhatsAppIcon = ({ size = 24, className = "" }: { size?: number; className?
 const GradientButton = ({ children, onClick, className = "" }: { children: React.ReactNode; onClick?: () => void; className?: string }) => (
   <button 
     onClick={onClick} 
-    className={`text-white font-bold py-4 px-8 rounded-full transition-all transform hover:scale-105 flex items-center gap-2 ${className}`}
+    className={`text-white font-bold py-4 px-8 rounded-full transition-all transform hover:scale-105 flex items-center gap-2 border border-purple-500/30 ${className}`}
     style={{
-      background: "radial-gradient(circle at 30% 70%, #6b2bff70 0%, transparent 45%), radial-gradient(circle at 70% 30%, #00000070 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
-      filter: "brightness(1.2)"
+      background: "linear-gradient(180deg, rgba(88, 28, 135, 0.8) 0%, rgba(15, 10, 30, 0.95) 100%)",
+      boxShadow: "0 0 20px rgba(139, 92, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
     }}
   >
     {children}
@@ -101,8 +101,9 @@ const FloatingContactButton = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const buttonStyle = {
-    background: "radial-gradient(circle at 30% 70%, #6b2bff70 0%, transparent 45%), radial-gradient(circle at 70% 30%, #00000070 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
-    filter: "brightness(1.2)"
+    background: "linear-gradient(180deg, rgba(88, 28, 135, 0.8) 0%, rgba(15, 10, 30, 0.95) 100%)",
+    boxShadow: "0 0 20px rgba(139, 92, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+    border: "1px solid rgba(139, 92, 246, 0.3)"
   };
 
   return (
@@ -189,7 +190,7 @@ const Navigation = ({ activePage, navigateTo, isInsideHero = false }: { activePa
     <nav className={`absolute top-0 left-0 right-0 z-50 px-6 py-4 ${!isInsideHero ? 'bg-black/80 backdrop-blur-md border-b border-white/10' : ''}`}>
       <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
         <div onClick={() => handleNavClick('home')} className="cursor-pointer select-none flex items-center gap-3">
-          <img src={logo} alt="JS-Laatupinta" className="h-12 md:h-14 w-auto" />
+          <img src={logo} alt="JS-Laatupinta" className="h-16 md:h-20 w-auto" />
         </div>
 
         {/* Desktop Links */}
@@ -249,7 +250,7 @@ const Hero = ({ activePage, navigateTo }: { activePage: string; navigateTo: (id:
     <div className="bg-black w-full pb-10">
       <section 
         id="hero" 
-        className="min-h-[40rem] rounded-b-[2.5rem] flex flex-col items-start justify-start antialiased relative overflow-hidden border-b border-neutral-800 shadow-2xl w-full"
+        className="min-h-[40rem] flex flex-col items-start justify-start antialiased relative overflow-hidden w-full"
         style={{
           background: "radial-gradient(circle at 30% 70%, #6b2bff70 0%, transparent 45%), radial-gradient(circle at 70% 30%, #00000070 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
           filter: "brightness(1.2)"
@@ -475,7 +476,7 @@ const ServicesPage = ({ navigateTo }: { navigateTo: (id: string) => void }) => {
   return (
     <div className="bg-black w-full pb-10">
       <section 
-        className="min-h-screen rounded-b-[2.5rem] flex flex-col items-start justify-start antialiased relative overflow-hidden border-b border-neutral-800 shadow-2xl w-full"
+        className="min-h-screen flex flex-col items-start justify-start antialiased relative overflow-hidden w-full"
         style={{
           background: "radial-gradient(circle at 30% 70%, #6b2bff70 0%, transparent 45%), radial-gradient(circle at 70% 30%, #00000070 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
           filter: "brightness(1.2)"
@@ -669,7 +670,7 @@ const ContactPage = () => {
           </div>
 
           {/* Billing Info Side (Replaces Form) */}
-          <div className="bg-neutral-900 rounded-3xl p-8 border border-white/5 shadow-2xl h-fit">
+          <div className="bg-black rounded-3xl p-8 border border-white/10 shadow-2xl h-fit">
             <h3 className="text-2xl font-bold text-white mb-8 border-b border-white/10 pb-4">Laskutustiedot</h3>
             
             <div className="space-y-6">
