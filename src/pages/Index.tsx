@@ -86,7 +86,7 @@ const WhatsAppIcon = ({ size = 24, className = "" }: { size?: number; className?
 const GradientButton = ({ children, onClick, className = "" }: { children: React.ReactNode; onClick?: () => void; className?: string }) => (
   <button 
     onClick={onClick} 
-    className={`text-white font-bold py-4 px-8 rounded-full transition-all transform hover:scale-105 flex items-center gap-2 ${className}`}
+    className={`text-white font-bold py-4 px-8 rounded-full transition-all flex items-center gap-2 ${className}`}
     style={{
       background: "radial-gradient(circle at 30% 70%, #6b2bff70 0%, transparent 45%), radial-gradient(circle at 70% 30%, #00000070 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
       filter: "brightness(1.2)"
@@ -186,7 +186,7 @@ const Navigation = ({ activePage, navigateTo, isInsideHero = false }: { activePa
   };
 
   return (
-    <nav className={`absolute top-0 left-0 right-0 z-50 px-6 py-4 ${!isInsideHero ? 'bg-black/80 backdrop-blur-md border-b border-white/10' : ''}`}>
+    <nav className={`absolute top-0 left-0 right-0 z-50 px-6 py-4`}>
       <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
         <div onClick={() => handleNavClick('home')} className="cursor-pointer select-none flex items-center gap-3">
           <img src={logo} alt="JS-Laatupinta" className="h-12 md:h-14 w-auto" />
@@ -246,24 +246,16 @@ const Navigation = ({ activePage, navigateTo, isInsideHero = false }: { activePa
 // Hero -osio
 const Hero = ({ activePage, navigateTo }: { activePage: string; navigateTo: (id: string) => void }) => {
   return (
-    <div className="bg-black w-full pb-10">
+    <div className="w-full">
       <section 
         id="hero" 
-        className="min-h-[40rem] rounded-b-[2.5rem] flex flex-col items-start justify-start antialiased relative overflow-hidden border-b border-neutral-800 shadow-2xl w-full"
-        style={{
-          background: "radial-gradient(circle at 30% 70%, #6b2bff70 0%, transparent 45%), radial-gradient(circle at 70% 30%, #00000070 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
-          filter: "brightness(1.2)"
-        }}
+        className="min-h-screen flex flex-col items-start justify-start antialiased relative w-full overflow-hidden"
       >
         
         <Navigation activePage={activePage} navigateTo={navigateTo} isInsideHero={true} />
 
         <div className="p-6 max-w-7xl mx-auto relative z-20 w-full pt-32 md:pt-40 flex flex-col items-start justify-start">
           
-          <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-fuchsia-500/30 bg-fuchsia-900/20 backdrop-blur-sm">
-            <span className="text-fuchsia-400 text-sm font-bold tracking-widest uppercase">Perheyritys Uudellamaalla</span>
-          </div>
-
           <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
             Uutta maalia,<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-purple-600">
@@ -297,25 +289,24 @@ const Hero = ({ activePage, navigateTo }: { activePage: string; navigateTo: (id:
 
 // Etusivun Palvelu-preview
 const HomeServicesPreview = ({ navigateTo }: { navigateTo: (id: string) => void }) => (
-  <section className="py-24 bg-black relative overflow-hidden">
-    <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-32">
+  <section className="relative overflow-hidden">
+    <div className="max-w-7xl mx-auto px-6 py-24 relative z-10 space-y-32">
       
       {/* OSA 1: Sisämaalaus (Kuva Vasen - Teksti Oikea) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        {/* Vasen: Kuva */}
-        <div className="relative group">
-          <div className="absolute inset-0 bg-fuchsia-900/20 blur-[80px] pointer-events-none"></div>
-          <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl aspect-[4/3]">
+        {/* Kuva */}
+        <div className="relative group order-1 lg:order-1">
+          <div className="relative rounded-3xl overflow-hidden aspect-[4/3]">
             <img 
-              src="https://images.unsplash.com/photo-1562259920-47afc305f369?q=80&w=1200&auto=format&fit=crop" 
+              src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1200&auto=format&fit=crop" 
               alt="Sisämaalausta" 
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
           </div>
         </div>
 
-        {/* Oikea: Teksti */}
-        <div>
+        {/* Teksti */}
+        <div className="order-2 lg:order-2">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Sisämaalaus
           </h2>
@@ -336,10 +327,10 @@ const HomeServicesPreview = ({ navigateTo }: { navigateTo: (id: string) => void 
         </div>
       </div>
 
-      {/* OSA 2: Tapetointi (Teksti Vasen - Kuva Oikea) */}
+      {/* OSA 2: Tapetointi (Teksti Ensin - Kuva Vieressä) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        {/* Vasen: Teksti */}
-        <div className="order-2 lg:order-1">
+        {/* Teksti */}
+        <div>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Tapetointi
           </h2>
@@ -359,10 +350,9 @@ const HomeServicesPreview = ({ navigateTo }: { navigateTo: (id: string) => void 
           </ul>
         </div>
 
-        {/* Oikea: Kuva */}
-        <div className="relative group order-1 lg:order-2">
-          <div className="absolute inset-0 bg-fuchsia-900/20 blur-[80px] pointer-events-none"></div>
-          <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl aspect-[4/3]">
+        {/* Kuva */}
+        <div className="relative group">
+          <div className="relative rounded-3xl overflow-hidden aspect-[4/3]">
             <img 
               src="https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=1200&auto=format&fit=crop" 
               alt="Tapetointia" 
@@ -372,24 +362,14 @@ const HomeServicesPreview = ({ navigateTo }: { navigateTo: (id: string) => void 
         </div>
       </div>
 
-      {/* Kaikki palvelut -nappi */}
-      <div className="text-center pt-8">
-        <div className="inline-block">
-          <GradientButton onClick={() => navigateTo('services')}>
-            Kaikki palvelut
-            <ArrowRight size={20} />
-          </GradientButton>
-        </div>
-      </div>
-
     </div>
   </section>
 );
 
 // Etusivun Referenssi-preview
 const HomeReferencesPreview = ({ navigateTo }: { navigateTo: (id: string) => void }) => (
-  <section className="py-20 bg-neutral-900/30">
-    <div className="max-w-7xl mx-auto px-6">
+  <section>
+        <div className="max-w-7xl mx-auto px-6 py-20">
        <div className="flex justify-between items-end mb-12">
           <div>
             <span className="text-fuchsia-500 font-bold tracking-widest uppercase text-sm mb-2 block">Referenssit</span>
@@ -401,8 +381,8 @@ const HomeReferencesPreview = ({ navigateTo }: { navigateTo: (id: string) => voi
        </div>
        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {referencesData.slice(0, 3).map((ref) => (
-            <div key={ref.id} className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-neutral-900 border border-white/5">
-               <img src={ref.src} alt={ref.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100" />
+          <div key={ref.id} className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-black/60 border border-white/5">
+               <img src={ref.src} alt={ref.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" />
                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-100 flex items-end p-6">
                   <h4 className="text-white font-bold text-lg translate-y-2 group-hover:translate-y-0 transition-transform">{ref.title}</h4>
                </div>
@@ -415,8 +395,8 @@ const HomeReferencesPreview = ({ navigateTo }: { navigateTo: (id: string) => voi
 
 // Etusivun Yhteystieto-osio
 const HomeContactPreview = ({ navigateTo }: { navigateTo: (id: string) => void }) => (
-  <section className="py-20 bg-black border-t border-neutral-900">
-    <div className="max-w-4xl mx-auto px-6 text-center">
+  <section>
+    <div className="max-w-4xl mx-auto px-6 py-20 text-center">
       <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Valmiina aloittamaan?</h2>
       <p className="text-neutral-400 text-lg mb-10 max-w-2xl mx-auto">
         Tarjoamme ilmaisen arviokäynnin ja selkeän tarjouksen. Ota yhteyttä, niin suunnitellaan urakka yhdessä.
@@ -521,8 +501,7 @@ const ServicesPage = ({ navigateTo }: { navigateTo: (id: string) => void }) => {
 
                   {/* Image Section */}
                   <div className={`relative group ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                    <div className="absolute inset-0 bg-fuchsia-900/20 blur-[80px] pointer-events-none"></div>
-                    <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl aspect-[4/3]">
+                    <div className="relative rounded-3xl overflow-hidden aspect-[4/3]">
                       <img 
                         src={service.image} 
                         alt={service.title} 
@@ -532,15 +511,6 @@ const ServicesPage = ({ navigateTo }: { navigateTo: (id: string) => void }) => {
                   </div>
                 </div>
               ))}
-           </div>
-
-           {/* CTA at the bottom */}
-           <div className="bg-gradient-to-br from-fuchsia-900/20 to-neutral-900 border border-fuchsia-500/20 rounded-2xl p-12 flex flex-col justify-center items-center text-center max-w-4xl mx-auto">
-              <h3 className="text-3xl font-bold text-white mb-4">Etsitkö jotain muuta?</h3>
-              <p className="text-neutral-300 mb-8 max-w-xl">Räätälöimme palvelumme tarpeidesi mukaan. Ota yhteyttä ja kerro ideasi!</p>
-              <GradientButton onClick={() => navigateTo('contact')}>
-                Ota yhteyttä
-              </GradientButton>
            </div>
 
         </div>
@@ -554,7 +524,14 @@ const ReferencesPage = () => {
   const [selectedImage, setSelectedImage] = useState<{ id: number; src: string; title: string } | null>(null);
 
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-black">
+    <div
+      className="pt-32 pb-24 min-h-screen bg-black"
+      style={{
+        background:
+          "radial-gradient(circle at 30% 70%, #6b2bff40 0%, transparent 45%), radial-gradient(circle at 70% 30%, #000000b3 0%, transparent 55%), linear-gradient(180deg, #000000 0%, #000000 100%)",
+        filter: "brightness(1.05)",
+      }}
+    >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
           <div>
@@ -594,7 +571,7 @@ const ReferencesPage = () => {
             <X className="w-8 h-8" />
           </button>
           <div className="max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
-            <img src={selectedImage.src} alt={selectedImage.title} className="w-full rounded-lg shadow-2xl shadow-fuchsia-900/20" />
+            <img src={selectedImage.src} alt={selectedImage.title} className="w-full rounded-lg shadow-xl shadow-black/40" />
             <h3 className="text-white text-xl font-bold mt-4 text-center">{selectedImage.title}</h3>
           </div>
         </div>
@@ -669,7 +646,7 @@ const ContactPage = () => {
           </div>
 
           {/* Billing Info Side (Replaces Form) */}
-          <div className="bg-neutral-900 rounded-3xl p-8 border border-white/5 shadow-2xl h-fit">
+          <div className="bg-black rounded-2xl p-5 md:p-6 border border-white/10 shadow-lg h-fit max-w-sm mx-auto md:mx-0">
             <h3 className="text-2xl font-bold text-white mb-8 border-b border-white/10 pb-4">Laskutustiedot</h3>
             
             <div className="space-y-6">
@@ -721,10 +698,10 @@ const ContactPage = () => {
 
 // Footer
 const Footer = () => (
-  <footer className="bg-black py-12 border-t border-neutral-900 text-sm">
+  <footer className="pt-16 pb-32 md:pb-36 text-sm">
     <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
       <div className="flex items-center gap-2">
-        <img src={logo} alt="JS-Laatupinta" className="h-8 w-auto" />
+        <img src={logo} alt="JS-Laatupinta" className="h-16 md:h-20 w-auto" />
       </div>
       
       <div className="text-neutral-500">
@@ -749,7 +726,14 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans selection:bg-fuchsia-500 selection:text-white flex flex-col">
+    <div 
+      className="min-h-screen text-white font-sans selection:bg-fuchsia-500 selection:text-white flex flex-col"
+      style={{
+        background:
+          "radial-gradient(circle at 30% 70%, #6b2bff40 0%, transparent 45%), radial-gradient(circle at 70% 30%, #000000b3 0%, transparent 55%), linear-gradient(180deg, #000000 0%, #000000 100%)",
+        filter: "brightness(1.1)",
+      }}
+    >
       <FloatingContactButton />
       
       {/* Show global navigation only when NOT on home page and NOT on services page (since they have internal nav) */}
