@@ -57,6 +57,21 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        fuchsia: {
+          400: "#e879f9",
+          500: "#d946ef",
+          600: "#c026d3",
+          900: "#701a75",
+        },
+        neutral: {
+          300: "#d4d4d4",
+          400: "#a3a3a3",
+          500: "#737373",
+          700: "#404040",
+          800: "#262626",
+          900: "#171717",
+          950: "#0a0a0a",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -84,6 +99,7 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "bounce-slow": "bounce 2s infinite",
       },
     },
   },
