@@ -18,6 +18,11 @@ import {
   Maximize2,
   MessageCircle
 } from 'lucide-react';
+import logo from '@/assets/logo.webp';
+import keittioEnnen from '@/assets/keittio-ennen.jpeg';
+import keittioValmis from '@/assets/keittio-valmis.jpeg';
+import portaatEnnen from '@/assets/portaat-ennen.jpeg';
+import portaatValmis from '@/assets/portaat-valmis.jpeg';
 
 /* --- DATA --- */
 
@@ -55,12 +60,10 @@ const servicesData = [
 ];
 
 const referencesData = [
-  { id: 1, src: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=800&auto=format&fit=crop", title: "Olohuoneen muodonmuutos" },
-  { id: 2, src: "https://images.unsplash.com/photo-1594040226829-7f251ab46d80?q=80&w=800&auto=format&fit=crop", title: "Julkisivumaalaus, Espoo" },
-  { id: 3, src: "https://images.unsplash.com/photo-1505798577917-a65157d3320a?q=80&w=800&auto=format&fit=crop", title: "Tehosteseinä makuuhuoneessa" },
-  { id: 4, src: "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?q=80&w=800&auto=format&fit=crop", title: "Keittiön uudistus" },
-  { id: 5, src: "https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?q=80&w=800&auto=format&fit=crop", title: "Portaikon maalaus" },
-  { id: 6, src: "https://images.unsplash.com/photo-1558603668-6570496b66f8?q=80&w=800&auto=format&fit=crop", title: "Tapetointi" },
+  { id: 1, src: portaatEnnen, title: "Portaikko ennen remonttia" },
+  { id: 2, src: portaatValmis, title: "Portaikko remontin jälkeen" },
+  { id: 3, src: keittioEnnen, title: "Keittiö ennen remonttia" },
+  { id: 4, src: keittioValmis, title: "Keittiö remontin jälkeen" },
 ];
 
 /* --- KOMPONENTIT --- */
@@ -157,7 +160,7 @@ const FloatingContactButton = () => {
 
       <button 
         onClick={() => setIsOpen(!isOpen)} 
-        className={`w-14 h-14 rounded-full flex items-center justify-center transition-all transform hover:scale-105 z-50 ${isOpen ? '' : 'animate-bounce-slow'}`}
+        className="w-14 h-14 rounded-full flex items-center justify-center transition-all transform hover:scale-105 z-50"
         style={buttonStyle}
       >
         <MessageCircle size={24} className="text-white" />
@@ -186,13 +189,7 @@ const Navigation = ({ activePage, navigateTo, isInsideHero = false }: { activePa
     <nav className={`absolute top-0 left-0 right-0 z-50 px-6 py-4 ${!isInsideHero ? 'bg-black/80 backdrop-blur-md border-b border-white/10' : ''}`}>
       <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
         <div onClick={() => handleNavClick('home')} className="cursor-pointer select-none flex items-center gap-3">
-          <div className="bg-fuchsia-600 p-2 rounded-lg rotate-3 shadow-lg shadow-fuchsia-600/20">
-            <Paintbrush className="text-white w-6 h-6" />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-xl font-bold text-white tracking-wider uppercase leading-none">JS-Laatupinta</span>
-            <span className="text-[10px] text-fuchsia-400 tracking-widest uppercase mt-1">Asennetta & Ammattitaitoa</span>
-          </div>
+          <img src={logo} alt="JS-Laatupinta" className="h-12 md:h-14 w-auto" />
         </div>
 
         {/* Desktop Links */}
@@ -727,8 +724,7 @@ const Footer = () => (
   <footer className="bg-black py-12 border-t border-neutral-900 text-sm">
     <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
       <div className="flex items-center gap-2">
-        <Paintbrush className="text-fuchsia-600 w-5 h-5" />
-        <span className="text-white font-bold tracking-wider">JS-Laatupinta Oy</span>
+        <img src={logo} alt="JS-Laatupinta" className="h-8 w-auto" />
       </div>
       
       <div className="text-neutral-500">
