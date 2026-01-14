@@ -432,7 +432,7 @@ const ServicesPage = ({ navigateTo }: { navigateTo: (id: string) => void }) => {
   const detailedServices = [
     {
       ...servicesData[0],
-      image: "https://images.unsplash.com/photo-1562259920-47afc305f369?q=80&w=1200&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1200&auto=format&fit=crop"
     },
     {
       ...servicesData[1],
@@ -453,13 +453,9 @@ const ServicesPage = ({ navigateTo }: { navigateTo: (id: string) => void }) => {
   ];
 
   return (
-    <div className="bg-black w-full pb-10">
+    <div className="w-full pb-10">
       <section 
-        className="min-h-screen rounded-b-[2.5rem] flex flex-col items-start justify-start antialiased relative overflow-hidden border-b border-neutral-800 shadow-2xl w-full"
-        style={{
-          background: "radial-gradient(circle at 30% 70%, #6b2bff70 0%, transparent 45%), radial-gradient(circle at 70% 30%, #00000070 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
-          filter: "brightness(1.2)"
-        }}
+        className="min-h-screen flex flex-col items-start justify-start antialiased relative overflow-hidden w-full"
       >
         <Navigation activePage='services' navigateTo={navigateTo} isInsideHero={true} />
         
