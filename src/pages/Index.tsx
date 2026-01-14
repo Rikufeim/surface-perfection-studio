@@ -465,10 +465,12 @@ const ServicesPage = ({ navigateTo }: { navigateTo: (id: string) => void }) => {
         
         <div className="p-6 max-w-7xl mx-auto relative z-20 w-full pt-32 md:pt-40">
            {/* Header Content */}
-           <div className="mb-24 text-left">
-              <span className="text-fuchsia-500 font-bold tracking-widest uppercase text-sm mb-2 block">Palvelumme</span>
-              <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Remontit suurella <br/><span className="text-fuchsia-600">sydämellä</span></h2>
-              <p className="text-neutral-300 text-lg max-w-2xl">
+           <div className="mb-24 text-center">
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                Remontit suurella <br />
+                <span className="text-fuchsia-600">sydämellä</span>
+              </h2>
+              <p className="text-neutral-300 text-lg max-w-2xl mx-auto">
                 Tarjoamme monipuoliset maalaus- ja pintakäsittelypalvelut. Tutustu tarjontaamme ja kysy lisää – räätälöimme ratkaisun juuri sinulle.
               </p>
            </div>
