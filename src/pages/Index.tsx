@@ -74,7 +74,7 @@ const GradientButton = ({
   children: React.ReactNode;
   onClick?: () => void;
   className?: string;
-}) => <button onClick={onClick} className={`text-white font-bold py-4 px-8 rounded-full transition-all flex items-center gap-2 ${className}`} style={{
+}) => <button onClick={onClick} className={`text-white font-semibold tracking-wide py-4 px-8 rounded-full transition-all duration-300 flex items-center gap-2 hover:scale-105 hover:shadow-lg hover:shadow-fuchsia-500/30 ${className}`} style={{
   background: "radial-gradient(circle at 30% 70%, #6b2bff70 0%, transparent 45%), radial-gradient(circle at 70% 30%, #00000070 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
   filter: "brightness(1.2)"
 }}>
@@ -88,7 +88,7 @@ const FloatingContactButton = () => {
     background: "radial-gradient(circle at 30% 70%, #6b2bff70 0%, transparent 45%), radial-gradient(circle at 70% 30%, #00000070 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
     filter: "brightness(1.2)"
   };
-  return <div className="fixed bottom-24 right-6 z-[100] flex flex-col items-end gap-4">
+  return <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end gap-4" style={{ position: 'fixed' }}>
       {isOpen && <div className="flex flex-col gap-3 animate-in fade-in slide-in-from-bottom-8 duration-300 mb-2">
            <a href="https://wa.me/358458466055" target="_blank" rel="noopener noreferrer" className="flex items-center justify-end gap-3 group">
              <span className="bg-white text-neutral-900 px-3 py-1.5 rounded-lg shadow-lg font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
@@ -490,9 +490,10 @@ const ReferencesPage = () => {
 
 // Yhteydenottosivu
 const ContactPage = () => {
-  return <div className="pt-32 pb-24 min-h-screen bg-black relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-fuchsia-900/10 rounded-full blur-[100px] pointer-events-none"></div>
+  return <div className="pt-32 pb-24 min-h-screen relative overflow-hidden" style={{
+    background: "radial-gradient(circle at 30% 70%, #6b2bff40 0%, transparent 45%), radial-gradient(circle at 70% 30%, #000000b3 0%, transparent 55%), linear-gradient(180deg, #000000 0%, #000000 100%)",
+    filter: "brightness(1.05)"
+  }}>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -595,7 +596,7 @@ const ContactPage = () => {
 };
 
 // Footer
-const Footer = () => <footer className="pt-16 pb-32 md:pb-36 text-sm border-t border-neutral-800" style={{
+const Footer = () => <footer className="pt-16 pb-32 md:pb-36 text-sm" style={{
   background: "radial-gradient(circle at 30% 70%, #6b2bff30 0%, transparent 45%), radial-gradient(circle at 70% 30%, #000000b3 0%, transparent 55%), linear-gradient(180deg, #000000 0%, #000000 100%)"
 }}>
     <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
