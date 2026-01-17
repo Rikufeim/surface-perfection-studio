@@ -88,7 +88,9 @@ const FloatingContactButton = () => {
     background: "radial-gradient(circle at 30% 70%, #6b2bff70 0%, transparent 45%), radial-gradient(circle at 70% 30%, #00000070 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
     filter: "brightness(1.2)"
   };
-  return <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end gap-4" style={{ position: 'fixed' }}>
+  return <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end gap-4" style={{
+    position: 'fixed'
+  }}>
       {isOpen && <div className="flex flex-col gap-3 animate-in fade-in slide-in-from-bottom-8 duration-300 mb-2">
            <a href="https://wa.me/358458466055" target="_blank" rel="noopener noreferrer" className="flex items-center justify-end gap-3 group">
              <span className="bg-white text-neutral-900 px-3 py-1.5 rounded-lg shadow-lg font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
@@ -416,9 +418,7 @@ const ServicesPage = ({
                   
                   {/* Text Section */}
                   <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                    <div className="w-16 h-16 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-fuchsia-500 mb-6">
-                       <service.icon size={32} />
-                    </div>
+                    
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
                       {service.title}
                     </h2>
