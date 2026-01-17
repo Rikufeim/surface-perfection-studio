@@ -199,11 +199,11 @@ const Hero = ({
   navigateTo: (id: string) => void;
 }) => {
   return <div className="w-full">
-      <section id="hero" className="min-h-screen flex flex-col items-start justify-start antialiased relative w-full overflow-hidden">
+      <section id="hero" className="min-h-screen flex flex-col items-center justify-center antialiased relative w-full overflow-hidden">
         
         <Navigation activePage={activePage} navigateTo={navigateTo} isInsideHero={true} />
 
-        <div className="p-6 max-w-7xl mx-auto relative z-20 w-full pt-32 md:pt-40 flex flex-col items-start justify-start">
+        <div className="p-6 max-w-7xl mx-auto relative z-20 w-full flex flex-col items-start justify-start mt-16">
           
           <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
             Uutta maalia,<br />
@@ -219,13 +219,15 @@ const Hero = ({
           <div className="flex flex-col sm:flex-row gap-4 justify-start items-center mt-8">
             <GradientButton onClick={() => navigateTo('contact')}>
               Ota yhteyttä
-              <ArrowRight size={20} />
             </GradientButton>
             
-            <button onClick={() => navigateTo('services')} className="flex items-center gap-2 px-6 py-4 text-white font-medium hover:text-fuchsia-400 transition-colors">
-              <CheckCircle className="text-fuchsia-500" size={20} />
-              <span>Tutustu palveluihin</span>
-            </button>
+            <GradientButton onClick={() => navigateTo('services')}>
+              Sisämaalaus
+            </GradientButton>
+
+            <GradientButton onClick={() => navigateTo('services')}>
+              Tapetointi
+            </GradientButton>
           </div>
         </div>
       </section>
@@ -476,14 +478,15 @@ const ReferencesPage = () => {
       </div>
 
       {/* Modal */}
-      {selectedImage && <div className="fixed inset-0 z-[60] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setSelectedImage(null)}>
-          <button className="absolute top-6 right-6 text-white hover:text-fuchsia-500 transition-colors">
-            <X className="w-8 h-8" />
+      {selectedImage && <div className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-md flex items-center justify-center p-4 cursor-pointer" onClick={() => setSelectedImage(null)}>
+          <button className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-fuchsia-600 text-white flex items-center justify-center transition-all duration-300 hover:scale-110">
+            <X className="w-6 h-6" />
           </button>
-          <div className="max-w-4xl w-full" onClick={e => e.stopPropagation()}>
-            <img src={selectedImage.src} alt={selectedImage.title} className="w-full rounded-lg shadow-xl shadow-black/40" />
-            <h3 className="text-white text-xl font-bold mt-4 text-center">{selectedImage.title}</h3>
+          <div className="max-w-4xl w-full cursor-default" onClick={e => e.stopPropagation()}>
+            <img src={selectedImage.src} alt={selectedImage.title} className="w-full rounded-2xl shadow-2xl shadow-black/60" />
+            <h3 className="text-white text-xl font-bold mt-6 text-center">{selectedImage.title}</h3>
           </div>
+          <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-neutral-400 text-sm">Klikkaa missä tahansa sulkeaksesi</p>
         </div>}
     </div>;
 };
@@ -625,28 +628,30 @@ const Index = () => {
       behavior: 'smooth'
     });
   };
-  return <div className="min-h-screen text-white font-sans selection:bg-fuchsia-500 selection:text-white flex flex-col" style={{
-    background: "radial-gradient(circle at 30% 70%, #6b2bff40 0%, transparent 45%), radial-gradient(circle at 70% 30%, #000000b3 0%, transparent 55%), linear-gradient(180deg, #000000 0%, #000000 100%)",
-    filter: "brightness(1.1)"
-  }}>
-      <FloatingContactButton />
-      
-      {/* Show global navigation only when NOT on home page and NOT on services page (since they have internal nav) */}
-      {activePage !== 'home' && activePage !== 'services' && <Navigation activePage={activePage} navigateTo={navigateTo} />}
-      
-      <main className="flex-grow">
-        {activePage === 'home' && <>
-            <Hero activePage={activePage} navigateTo={navigateTo} />
-            <HomeServicesPreview navigateTo={navigateTo} />
-            <HomeReferencesPreview navigateTo={navigateTo} />
-            <HomeContactPreview navigateTo={navigateTo} />
-          </>}
-        {activePage === 'services' && <ServicesPage navigateTo={navigateTo} />}
-        {activePage === 'references' && <ReferencesPage />}
-        {activePage === 'contact' && <ContactPage />}
-      </main>
+  return <>
+    <FloatingContactButton />
+    <div className="min-h-screen text-white font-sans selection:bg-fuchsia-500 selection:text-white flex flex-col" style={{
+      background: "radial-gradient(circle at 30% 70%, #6b2bff40 0%, transparent 45%), radial-gradient(circle at 70% 30%, #000000b3 0%, transparent 55%), linear-gradient(180deg, #000000 0%, #000000 100%)",
+      filter: "brightness(1.1)"
+    }}>
+        
+        {/* Show global navigation only when NOT on home page and NOT on services page (since they have internal nav) */}
+        {activePage !== 'home' && activePage !== 'services' && <Navigation activePage={activePage} navigateTo={navigateTo} />}
+        
+        <main className="flex-grow">
+          {activePage === 'home' && <>
+              <Hero activePage={activePage} navigateTo={navigateTo} />
+              <HomeServicesPreview navigateTo={navigateTo} />
+              <HomeReferencesPreview navigateTo={navigateTo} />
+              <HomeContactPreview navigateTo={navigateTo} />
+            </>}
+          {activePage === 'services' && <ServicesPage navigateTo={navigateTo} />}
+          {activePage === 'references' && <ReferencesPage />}
+          {activePage === 'contact' && <ContactPage />}
+        </main>
 
-      <Footer />
-    </div>;
+        <Footer />
+      </div>
+    </>;
 };
 export default Index;
