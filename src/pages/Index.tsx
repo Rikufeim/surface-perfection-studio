@@ -106,7 +106,7 @@ const FloatingContactButton = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end gap-4">
+    <div className="fixed bottom-24 right-6 z-[100] flex flex-col items-end gap-4">
       {isOpen && (
         <div className="flex flex-col gap-3 animate-in fade-in slide-in-from-bottom-8 duration-300 mb-2">
            <a 
@@ -696,7 +696,12 @@ const ContactPage = () => {
 
 // Footer
 const Footer = () => (
-  <footer className="pt-16 pb-32 md:pb-36 text-sm">
+  <footer 
+    className="pt-16 pb-32 md:pb-36 text-sm border-t border-neutral-800"
+    style={{
+      background: "radial-gradient(circle at 30% 70%, #6b2bff30 0%, transparent 45%), radial-gradient(circle at 70% 30%, #000000b3 0%, transparent 55%), linear-gradient(180deg, #000000 0%, #000000 100%)",
+    }}
+  >
     <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
       <div className="flex items-center gap-2">
         <img src={logo} alt="JS-Laatupinta" className="h-16 md:h-20 w-auto" />
