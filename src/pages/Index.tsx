@@ -221,13 +221,10 @@ const Hero = ({
               Ota yhteyttä
             </GradientButton>
             
-            <GradientButton onClick={() => navigateTo('services')}>
-              Sisämaalaus
-            </GradientButton>
-
-            <GradientButton onClick={() => navigateTo('services')}>
-              Tapetointi
-            </GradientButton>
+            <button onClick={() => navigateTo('services')} className="flex items-center gap-2 px-6 py-4 text-white font-medium hover:text-fuchsia-400 transition-colors">
+              <CheckCircle className="text-fuchsia-500" size={20} />
+              <span>Tutustu palveluihin</span>
+            </button>
           </div>
         </div>
       </section>
@@ -270,6 +267,9 @@ const HomeServicesPreview = ({
               <CheckCircle className="w-5 h-5 text-fuchsia-500" /> Listoitukset ja viimeistelyt
             </li>
           </ul>
+          <GradientButton onClick={() => navigateTo('services')}>
+            Sisämaalaus
+          </GradientButton>
         </div>
       </div>
 
@@ -294,6 +294,9 @@ const HomeServicesPreview = ({
               <CheckCircle className="w-5 h-5 text-fuchsia-500" /> Pohjatyöt tasaista pintaa varten
             </li>
           </ul>
+          <GradientButton onClick={() => navigateTo('services')}>
+            Tapetointi
+          </GradientButton>
         </div>
 
         {/* Kuva */}
